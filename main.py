@@ -228,6 +228,22 @@ def run_recommender(input):
       st.text("No topics found!")
 
 
+st.markdown("""
+  ## Hi!
+
+  Thank you for visiting. This is a demo for the academic recommender, 
+  a text based recommendation system for scientic researchers.
+
+  Using it, you can receive suggestions for academic people based on you input.
+
+  We currently support scientific field and location (countries).
+
+  To use it, simply input what you are interested in and get results.
+  Example: I am interested in Computer Science in Germany
+
+  Please help us be rating the result via the input at the bottom, thank you!
+  """)
+
 
 text_input = st.text_input("What are you interested in?")
 
