@@ -28,6 +28,7 @@ import nltk
 from nltk.corpus import stopwords
 import pycountry
 from typing import List, Dict, Union
+import streamlit as st
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -186,28 +187,37 @@ def print_authors(authors, country_code):
     print("   • Number of citations: ", author['cited_by_count'])
     print("   • Citing score: ", author['citing_score'])
 
-# extract topics from the user input query
-topics, locations = extract_information("I'm interested in Computer Science and Botanic in France, Germany and Italy")
-print("The inferred topics are:", ", ".join(topics))
-print("The inferred locations are:", ", ".join(locations))
 
-# if no topics are inferred, we abort
-if len(topics) != 0:
+def run_recommender(input):
+    # extract topics from the user input query
+  topics, locations = extract_information("I'm interested in Computer Science and Botanic in France, Germany and Italy")
+  print("The inferred topics are:", ", ".join(topics))
+  print("The inferred locations are:", ", ".join(locations))
 
-  for topic in topics:
-    # get concepts based on topics
-    concepts = get_concepts(topic)
+  # if no topics are inferred, we abort
+  if len(topics) != 0:
 
-    # get country_codes based on inferred locations
-    # to ensure the below for loop runs once when no locations are specified,
-    # convert_location_to_alpha2 returns [None] when locations are empty.
-    country_codes = convert_location_to_alpha2(locations)
-    print(f'Results for the topic: "{topic}"')
-    for country_code in country_codes:
-      # get authors for the first 5 concepts and the country code
-      authors = get_authors(concepts[:5], country_code)
-      # print first 5 authors and the country code
-      print_authors(authors[:5], country_code)
-      print('\n\n')
-else:
-  print("No topics found!")
+    for topic in topics:
+      # get concepts based on topics
+      concepts = get_concepts(topic)
+
+      # get country_codes based on inferred locations
+      # to ensure the below for loop runs once when no locations are specified,
+      # convert_location_to_alpha2 returns [None] when locations are empty.
+      country_codes = convert_location_to_alpha2(locations)
+      print(f'Results for the topic: "{topic}"')
+      for country_code in country_codes:
+        # get authors for the first 5 concepts and the country code
+        authors = get_authors(concepts[:5], country_code)
+        # print first 5 authors and the country code
+        print_authors(authors[:5], country_code)
+        print('\n\n')
+  else:
+    print("No topics found!")
+
+
+
+text_input = st.text_input("What are you interested in?")
+
+    if text_input:
+        run_recommender(text_input)
