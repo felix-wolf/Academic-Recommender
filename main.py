@@ -190,30 +190,31 @@ def print_authors(authors, country_code):
 
 def run_recommender(input):
     # extract topics from the user input query
-  topics, locations = extract_information(input)
-  print("The inferred topics are:", ", ".join(topics))
-  print("The inferred locations are:", ", ".join(locations))
+    print("running...")
+    topics, locations = extract_information(input)
+    print("The inferred topics are:", ", ".join(topics))
+    print("The inferred locations are:", ", ".join(locations))
 
-  # if no topics are inferred, we abort
-  if len(topics) != 0:
+    # if no topics are inferred, we abort
+    if len(topics) != 0:
 
-    for topic in topics:
-      # get concepts based on topics
-      concepts = get_concepts(topic)
+      for topic in topics:
+        # get concepts based on topics
+        concepts = get_concepts(topic)
 
-      # get country_codes based on inferred locations
-      # to ensure the below for loop runs once when no locations are specified,
-      # convert_location_to_alpha2 returns [None] when locations are empty.
-      country_codes = convert_location_to_alpha2(locations)
-      print(f'Results for the topic: "{topic}"')
-      for country_code in country_codes:
-        # get authors for the first 5 concepts and the country code
-        authors = get_authors(concepts[:5], country_code)
-        # print first 5 authors and the country code
-        print_authors(authors[:5], country_code)
-        print('\n\n')
-  else:
-    print("No topics found!")
+        # get country_codes based on inferred locations
+        # to ensure the below for loop runs once when no locations are specified,
+        # convert_location_to_alpha2 returns [None] when locations are empty.
+        country_codes = convert_location_to_alpha2(locations)
+        print(f'Results for the topic: "{topic}"')
+        for country_code in country_codes:
+          # get authors for the first 5 concepts and the country code
+          authors = get_authors(concepts[:5], country_code)
+          # print first 5 authors and the country code
+          print_authors(authors[:5], country_code)
+          print('\n\n')
+    else:
+      print("No topics found!")
 
 
 
