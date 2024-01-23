@@ -157,8 +157,12 @@ def get_authors(concepts: List[Dict[str, str]], country_code: Union[str, None]):
       author['2yr_mean_citedness'] = a['summary_stats']['2yr_mean_citedness']
       lki = a.get('last_known_institution', None)
       if lki is not None:
-        st.text(lki['country_code'])
-        author['association'] = f"{lki['display_name']} - {pycountry.countries.get(alpha_2=lki['country_code']).name}"
+
+        country_code_string = ""
+        country = pycountry.countries.get(alpha_2=lki['country_code'])
+        if country is not None:
+          country_code_string = f" - {country.name}"
+        author['association'] = f"{lki['display_name']}{country_code_string}"
       else:
         author['association'] = 'No institution'
       all_authors.append(author)
