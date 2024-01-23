@@ -27,7 +27,7 @@ from transformers import pipeline
 import nltk
 from nltk.corpus import stopwords
 import pycountry
-from typing import List, Dict
+from typing import List, Dict, Union
 
 nltk.download('punkt')
 nltk.download('stopwords')
