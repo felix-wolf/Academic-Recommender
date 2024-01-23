@@ -1,0 +1,4 @@
+transformers
+pycountry
+nltk
+requests
