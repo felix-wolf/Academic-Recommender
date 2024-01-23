@@ -18,8 +18,8 @@ While step 1 relies on step 2, both steps should not be run together, as model t
 """
 
 # Install
-!pip install transformers
-!pip install pycountry
+#!pip install transformers
+#!pip install pycountry
 
 # Imports
 import requests
