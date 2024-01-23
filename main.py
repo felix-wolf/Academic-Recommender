@@ -234,11 +234,11 @@ st.markdown("""
   Thank you for visiting. This is a demo for the academic recommender, 
   a text based recommendation system for scientic researchers.
 
-  Using it, you can receive suggestions for academic people based on you input.
-
-  We currently support scientific field and location (countries).
+  Using it, you can receive suggestions for academic people to collaborate with based on you input.
 
   To use it, simply input what you are interested in and get results.
+  We currently support scientific field and location (countries).
+  
   Example: I am interested in Computer Science in Germany
 
   Please help us be rating the result via the input at the bottom, thank you!
