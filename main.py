@@ -159,9 +159,9 @@ def get_authors(concepts: List[Dict[str, str]], country_code: Union[str, None]):
       if lki is not None:
 
         country_code_string = ""
-        country = pycountry.countries.get(alpha_2=lki['country_code'])
-        if country is not None:
-          country_code_string = f" - {country.name}"
+        country_code = lki['country_code']
+        if country_code is not None:
+          country_code_string = f" - {pycountry.countries.get(alpha_2=country_code).name}"
         author['association'] = f"{lki['display_name']}{country_code_string}"
       else:
         author['association'] = 'No institution'
