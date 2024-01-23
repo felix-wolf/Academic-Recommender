@@ -115,7 +115,7 @@ def get_concepts(topic:str):
   concepts = [dict(zip(keys, [result[key] for key in keys])) for result in results]
   return concepts
 
-def get_authors(concepts: List[Dict], country_code: str | None):
+def get_authors(concepts: List[Dict[str, str]], country_code: str | None):
   '''
   Builds a list of 100 authors that belong to one of the specified concepts and
   to the country code by querying openAlex
