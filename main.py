@@ -219,5 +219,5 @@ def run_recommender(input):
 
 text_input = st.text_input("What are you interested in?")
 
-    if text_input:
-        run_recommender(text_input)
+if text_input:
+    run_recommender(text_input)
