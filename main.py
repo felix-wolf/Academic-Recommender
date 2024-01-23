@@ -48,7 +48,9 @@ def anwser_question(context:str, question:str):
 
   :param question: The question to be asked to the model about the query of the user.
   '''
+  print("loading model...")
   qa_model = load_model()
+  print("tokenizing input...")
   split_context = nltk.sent_tokenize(context)
 
   print("running model...")
