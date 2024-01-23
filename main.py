@@ -190,7 +190,7 @@ def print_authors(authors, country_code):
 
 def run_recommender(input):
     # extract topics from the user input query
-  topics, locations = extract_information("I'm interested in Computer Science and Botanic in France, Germany and Italy")
+  topics, locations = extract_information(input)
   print("The inferred topics are:", ", ".join(topics))
   print("The inferred locations are:", ", ".join(locations))
 
