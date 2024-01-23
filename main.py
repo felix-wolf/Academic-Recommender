@@ -45,13 +45,14 @@ def anwser_question(context:str, question:str):
   qa_model = pipeline("question-answering", "timpal0l/mdeberta-v3-base-squad2")
   split_context = nltk.sent_tokenize(context)
 
+  print("running model...")
   answers = []
   for c in split_context:
     answers.append(qa_model(question = question, context = c))
-
+  print("filtering output...")
   infos = [answer['answer'] for answer in answers if answer['score'] > 0.15]
   filtered_infos = remove_stop_words(infos)
-
+  print("processing done.")
   return filtered_infos
 
 
