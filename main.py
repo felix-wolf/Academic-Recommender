@@ -222,7 +222,7 @@ def run_recommender(input):
         # to ensure the below for loop runs once when no locations are specified,
         # convert_location_to_alpha2 returns [None] when locations are empty.
         country_codes = convert_location_to_alpha2(locations)
-        if len(locations) > 0 and len(country_codes) == 0:
+        if len(locations) > 0 and not any(country_codes):
           st.text("We could not derive a location from your input, try to rephrase it :)")
         st.text(f'Results for the topic: "{topic}"')
         for country_code in country_codes:
