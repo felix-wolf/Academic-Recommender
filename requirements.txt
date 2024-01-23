@@ -1,4 +1,5 @@
 transformers
+pyTorch
 pycountry
 nltk
 requests
