@@ -209,7 +209,8 @@ def run_recommender(input):
     # extract topics from the user input query
     topics, locations = extract_information(input)
     st.text(f"The inferred topics are: {', '.join(topics)}")
-    st.text(f"The inferred locations are: {', '.join(locations)}")
+    if len(locations) > 0:
+      st.text(f"The inferred locations are: {', '.join(locations)}")
 
     # if no topics are inferred, we abort
     if len(topics) != 0:
