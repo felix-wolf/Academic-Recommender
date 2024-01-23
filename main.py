@@ -33,6 +33,12 @@ import streamlit as st
 nltk.download('punkt')
 nltk.download('stopwords')
 
+@st.cache_resource
+def load_model():
+    model = pipeline("question-answering", "timpal0l/mdeberta-v3-base-squad2")
+    st.success("Loaded NLP model from Hugging Face!")  # 👈 Show a success message
+    return model
+
 def anwser_question(context:str, question:str):
   '''
   Asks the qa_model to answer a given question based on the passed context.
@@ -42,7 +48,7 @@ def anwser_question(context:str, question:str):
 
   :param question: The question to be asked to the model about the query of the user.
   '''
-  qa_model = pipeline("question-answering", "timpal0l/mdeberta-v3-base-squad2")
+  qa_model = load_model()
   split_context = nltk.sent_tokenize(context)
 
   print("running model...")
