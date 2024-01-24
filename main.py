@@ -272,19 +272,11 @@ text_input = st.text_input("What are you interested in?")
 if text_input:
     run_recommender(text_input)
 
-survey = ss.StreamlitSurvey()
-
-error = survey.radio(
-  "How satisfied are you with the suggestions?",
-  options=["1", "2", "3", "4"],
-  horizontal=True,
-  id="satifsaction"
-)
-if error:
-  user_feedback = collector.st_feedback(
-    component="default",
-    feedback_type="thumbs",
-    open_feedback_label="[Optional] Provide additional feedback",
-    model="gpt-3.5-turbo",
-    prompt_id=None,  # checkout collector.log_prompt() to log your user prompts
+st.text("How satisfied are you with the suggestions?")
+user_feedback = collector.st_feedback(
+  component="satisfaction",
+  feedback_type="thumbs",
+  open_feedback_label="[Optional] Provide additional feedback",
+  model="gpt-3.5-turbo",
+  prompt_id=None,  # checkout collector.log_prompt() to log your user prompts
   )
