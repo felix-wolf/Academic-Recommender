@@ -31,16 +31,17 @@ from typing import List, Dict, Union
 import streamlit as st
 import streamlit_survey as ss
 from trubrics import Trubrics
+from trubrics.integrations.streamlit import FeedbackCollector
 import os
 
 
 nltk.download('punkt')
 nltk.download('stopwords')
 
-trubrics = Trubrics(
-    project="default",
-    email=os.environ["TRUBRICS_EMAIL"],
-    password=os.environ["TRUBRICS_PASSWORD"],
+collector = FeedbackCollector(
+    email=st.secrets.TRUBRICS_EMAIL,
+    password=st.secrets.TRUBRICS_PASSWORD,
+    project="default"
 )
 
 @st.cache_resource
@@ -280,13 +281,10 @@ survey = ss.StreamlitSurvey()
   id="satifsaction"
   )
  if error:
-  user_feedback = trubrics.log_feedback(
+  user_feedback = collector.st_feedback(
     component="default",
-    model="test",
-    prompt_id="test123",
-    user_response={
-        "type": "thumbs",
-        "score": "👎",
-        "text": "Not a very funny joke...",
-    }
+    feedback_type="thumbs",
+    open_feedback_label="[Optional] Provide additional feedback",
+    model="gpt-3.5-turbo",
+    prompt_id=None,  # checkout collector.log_prompt() to log your user prompts
 )

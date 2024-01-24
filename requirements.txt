@@ -4,3 +4,4 @@ pycountry
 nltk
 requests
 streamlit-survey
+trubrics[streamlit]
