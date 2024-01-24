@@ -275,7 +275,7 @@ if text_input:
 st.text("How satisfied are you with the suggestions?")
 user_feedback = collector.st_feedback(
   component="satisfaction",
-  feedback_type="thumbs",
+  feedback_type="faces",
   open_feedback_label="[Optional] Provide additional feedback",
   model="gpt-3.5-turbo",
   prompt_id=None,  # checkout collector.log_prompt() to log your user prompts
