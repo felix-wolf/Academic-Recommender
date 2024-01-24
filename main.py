@@ -30,10 +30,18 @@ import pycountry
 from typing import List, Dict, Union
 import streamlit as st
 import streamlit_survey as ss
+from trubrics import Trubrics
+import os
 
 
 nltk.download('punkt')
 nltk.download('stopwords')
+
+trubrics = Trubrics(
+    project="default",
+    email=os.environ["TRUBRICS_EMAIL"],
+    password=os.environ["TRUBRICS_PASSWORD"],
+)
 
 @st.cache_resource
 def load_model():
@@ -271,3 +279,14 @@ survey = ss.StreamlitSurvey()
   horizontal=True,
   id="satifsaction"
   )
+ if error:
+  user_feedback = trubrics.log_feedback(
+    component="default",
+    model="test",
+    prompt_id="test123",
+    user_response={
+        "type": "thumbs",
+        "score": "👎",
+        "text": "Not a very funny joke...",
+    }
+)
