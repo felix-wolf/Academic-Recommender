@@ -274,7 +274,7 @@ if text_input:
 
 st.text("How satisfied are you with the suggestions?")
 user_feedback = collector.st_feedback(
-  component="satisfaction",
+  component="default",
   feedback_type="faces",
   open_feedback_label="[Optional] Provide additional feedback",
   model="gpt-3.5-turbo",
