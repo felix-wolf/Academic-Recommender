@@ -3,3 +3,4 @@ torch
 pycountry
 nltk
 requests
+streamlit-survey

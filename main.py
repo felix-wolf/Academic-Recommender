@@ -29,6 +29,8 @@ from nltk.corpus import stopwords
 import pycountry
 from typing import List, Dict, Union
 import streamlit as st
+import streamlit_survey as ss
+
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -237,17 +239,20 @@ def run_recommender(input):
 
 
 st.markdown("""
-  ## Hi!
+  ### Academic Recommender
 
-  Thank you for visiting. This is a demo for the academic recommender, 
-  a text based recommendation system for scientic researchers.
-
-  Using it, you can receive suggestions for academic people to collaborate with based on you input.
+  Academic recommender is a system that suggests scientific researchers 
+  based on your research interests.
 
   To use it, simply input what you are interested in and get results.
-  We currently support scientific field and location (countries).
-  
-  Example: I am interested in Computer Science in Germany
+  We currently support scientific fields and countries as locations.
+
+  Example: I am interested in Computer Science in Germany.
+
+  For each topic and location combination, it returns 5 researchers, 
+  ranked by the number of citations in the last 2 years.
+
+  This tool is powered by OpenAlex.
 
   Please help us be rating the result via the input at the bottom, thank you!
   """)
@@ -257,3 +262,12 @@ text_input = st.text_input("What are you interested in?")
 
 if text_input:
     run_recommender(text_input)
+
+survey = ss.StreamlitSurvey()
+
+ error = survey.radio(
+  "How satisfied are you with the suggestions?",
+  options=["1", "2", "3", "4"],
+  horizontal=True,
+  id="satifsaction"
+  )
