@@ -240,7 +240,7 @@ def run_recommender(input):
 st.markdown("""
   ### Academic Recommender
 
-  Academic recommender is a system that suggests scientific researchers 
+  Academic recommender is a system that suggests scientific researchers
   based on your research interests.
 
   To use it, simply input what you are interested in and get results.
@@ -248,7 +248,7 @@ st.markdown("""
 
   Example: I am interested in Computer Science in Germany.
 
-  For each topic and location combination, it returns 5 researchers, 
+  For each topic and location combination, it returns 5 researchers,
   ranked by the number of citations in the last 2 years.
 
   This tool is powered by OpenAlex.
