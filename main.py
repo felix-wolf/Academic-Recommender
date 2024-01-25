@@ -241,7 +241,7 @@ st.markdown("""
   ### Academic Recommender
 
   Academic recommender is a system that suggests scientific researchers
-  based on your research interests.
+  based on your research interests and location.
 
   To use it, simply input what you are interested in and get results.
   We currently support scientific fields and countries as locations.
@@ -250,10 +250,9 @@ st.markdown("""
 
   For each topic and location combination, it returns 5 researchers,
   ranked by the number of citations in the last 2 years.
-
   This tool is powered by OpenAlex.
 
-  Please help us by filling out [this form after using the system](https://www.google.com/), thank you!
+  Please help us by filling out [this form after using the system](https://docs.google.com/forms/d/e/1FAIpQLSeVGkPnEmbCR3ZdgDvegpXz1fVfgMFjObzEd1jrJWDTboJYJA/viewform?usp=sf_link), thank you!
   """)
 
 
